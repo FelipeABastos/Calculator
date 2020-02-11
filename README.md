@@ -22,5 +22,5 @@ UIStackView
 * **Felipe Bastos** 
 
 ## App working
-<img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Calculator/blob/master/Calculator.gif"> 
-<img align="center" width="270" height="540" src="https://github.com/FelipeABastos/Calculator/blob/master/Calculator2.gif"> 
+<img align="left" width="270" height="540" src="https://github.com/FelipeABastos/Calculator/blob/master/MakingCount.gif"> 
+<img align="center" width="270" height="540" src="https://github.com/FelipeABastos/Calculator/blob/master/CalculatorSavingResult.gif"> 
