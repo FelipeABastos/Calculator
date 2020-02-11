@@ -15,6 +15,7 @@ UIKit
 
 ```
 UIStackView
+UITableView
 ```
 
 ## Authors
