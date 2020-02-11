@@ -19,6 +19,11 @@ enum Operation: String {
 
 class CalculatorViewController: UIViewController {
     
+    let defaults = UserDefaults.standard
+    
+//    var numbersArray: Array<Result> = []
+    
+    @IBOutlet var txtName: UITextField?
     @IBOutlet var lblCount: UILabel?
     
     @IBOutlet var btnAdd: UIButton?
@@ -40,6 +45,11 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
         
         lblCount?.text = "0"
+        
+        if let placeholder = txtName?.placeholder {
+            txtName?.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.4)])
+        }
         
     }
     
@@ -66,6 +76,32 @@ class CalculatorViewController: UIViewController {
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
+    
+    @IBAction func saveCount() {
+        
+        let savedVC = storyboard?.instantiateViewController(identifier: "SavesView") as! SavesViewController
+        
+        let dic = ["name": txtName?.text ?? "",
+                   "result": lblCount?.text ?? ""]
+        
+        if var numbersDictionary = UserDefaults.standard.value(forKey: "results") as? Array<Dictionary<String,String>> {
+            
+            numbersDictionary.append(dic)
+            UserDefaults.standard.set(numbersDictionary, forKey: "results")
+            UserDefaults.standard.synchronize()
+        }else{
+            UserDefaults.standard.set([dic], forKey: "results")
+        }
+        
+        self.present(savedVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func goToSavedCounts() {
+        
+        let savedVC = storyboard?.instantiateViewController(identifier: "SavesView") as! SavesViewController
+        
+        self.present(savedVC, animated: true, completion: nil)
+    }
     
     @IBAction func numberPressed(_ sender: UIButton) {
         
