@@ -93,6 +93,7 @@ class CalculatorViewController: UIViewController {
             UserDefaults.standard.set([dic], forKey: "results")
         }
         
+        txtName?.text = ""
         self.present(savedVC, animated: true, completion: nil)
     }
     
